@@ -19,3 +19,19 @@ model Todo {
   todo String  @db.Text
   done Boolean
 }
+
+model User {
+  id    Int    @id @default(autoincrement())
+  name  String @default("")
+  image String @default("")
+  email String @unique
+  role  ROLE   @default(USER)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum ROLE {
+  USER
+  ADMIN
+}
