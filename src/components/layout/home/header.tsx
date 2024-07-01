@@ -1,4 +1,4 @@
-import Logo from "@/components/globals/logo";
+import Logo from "@/components/global/logo";
 import Navbar from "@/components/layout/home/navbar";
 import { ModeToggle } from "@/components/layout/mode-toggle";
 import React from "react";

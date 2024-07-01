@@ -1,8 +1,8 @@
-export type StripePlan = "STARTER" | "BASIC" | "UNLIMITED";
+import { PLAN } from "@prisma/client";
 
-export type StripePlanCardItem = {
+export type PLANCardItem = {
   title: string;
-  plan: StripePlan;
+  plan: PLAN;
   description: string;
   price: string;
   duration: string;

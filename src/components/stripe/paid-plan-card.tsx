@@ -19,6 +19,9 @@ type Props = {
 };
 const PaidPlanCard = ({ card }: Props) => {
   const isUnlimited = card.nickname === "Unlimited SaaS";
+  const plan = pricingCards.find(
+    (c) => c.title.toLowerCase() === card.nickname?.toLowerCase()
+  );
   return (
     <Card
       key={card.nickname}
@@ -34,13 +37,11 @@ const PaidPlanCard = ({ card }: Props) => {
         >
           {card.nickname}
         </CardTitle>
-        <CardDescription>
-          {pricingCards.find((c) => c.title === card.nickname)?.description}
-        </CardDescription>
+        <CardDescription>{plan?.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <span className="text-4xl font-bold">
-          {card.unit_amount && card.unit_amount / 100}
+          ${card.unit_amount && card.unit_amount / 100}
         </span>
         <span className="text-muted-foreground">
           <span>/ {card.recurring?.interval}</span>
@@ -48,16 +49,14 @@ const PaidPlanCard = ({ card }: Props) => {
       </CardContent>
       <CardFooter className="flex flex-col items-start gap-4">
         <div>
-          {pricingCards
-            .find((c) => c.title.toLowerCase() === card.nickname?.toLowerCase())
-            ?.features.map((feature) => (
-              <div key={feature} className="flex gap-2">
-                <CheckIcon />
-                <p>{feature}</p>
-              </div>
-            ))}
+          {plan?.features.map((feature) => (
+            <div key={feature} className="flex gap-2">
+              <CheckIcon />
+              <p>{feature}</p>
+            </div>
+          ))}
         </div>
-        <Link href={`/dashboard?plan=${card.id}`} className="w-full">
+        <Link href={`/dashboard?plan=${plan?.plan}`} className="w-full">
           <Button
             variant={isUnlimited ? "default" : "outline"}
             className="w-full"

@@ -1,7 +1,7 @@
-import { stripeProjectKeys } from "@/constants/stripe-constants";
-import { StripePlanCardItem } from "@/types/stripe-types";
+import { stripePriceIds } from "@/constants/stripe-constants";
+import { PLANCardItem } from "@/types/stripe-types";
 
-export const pricingCards: StripePlanCardItem[] = [
+export const pricingCards: PLANCardItem[] = [
   {
     title: "Starter",
     plan: "STARTER",
@@ -10,7 +10,7 @@ export const pricingCards: StripePlanCardItem[] = [
     duration: "",
     highlight: "Key features",
     features: ["3 Sub accounts", "2 Team members"],
-    priceId: stripeProjectKeys.STARTER,
+    priceId: stripePriceIds.STARTER,
   },
   {
     title: "Unlimited SaaS",
@@ -25,7 +25,7 @@ export const pricingCards: StripePlanCardItem[] = [
       "Team Collboration",
       "24/7 Support team",
     ],
-    priceId: stripeProjectKeys.UNLIMITED,
+    priceId: stripePriceIds.UNLIMITED,
   },
   {
     title: "Basic",
@@ -35,6 +35,6 @@ export const pricingCards: StripePlanCardItem[] = [
     duration: "month",
     highlight: "Everything in Starter, plus",
     features: ["5 Sub accounts", "Team Collaboration", "Email Support"],
-    priceId: stripeProjectKeys.BASIC,
+    priceId: stripePriceIds.BASIC,
   },
 ];

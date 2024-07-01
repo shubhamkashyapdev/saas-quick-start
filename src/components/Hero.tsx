@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRightSquareIcon } from "lucide-react";
 import { HeroFlipWords } from "@/components/home/hero-flip-words";
 import LitUpButton from "@/components/ui/lit-up-button";
+import BlurShadowEffect from "@/components/global/blur-shadow-effect";
 
 export function HomeHero() {
   return (
@@ -37,7 +38,7 @@ export function HomeHero() {
           <LitUpButton>Get Started</LitUpButton>
         </Link>
       </HeroHighlight>
-      <div className="bottom-0 top-[50%] bg-gradient-to-t dark:from-background left-0 right-0 absolute z-10"></div>
+      <BlurShadowEffect />
     </div>
   );
 }
