@@ -22,8 +22,8 @@ export async function POST(request: Request) {
     );
   }
   const session = event.data.object as Stripe.Checkout.Session;
-  const userId = Number(session?.metadata?.userId);
-  if (!userId || isNaN(userId)) {
+  const userId = session?.metadata?.userId;
+  if (!userId) {
     // logger.error(`invalid userId in metadata ${userId}`);
     return new Response("invalid userId in metadata", {
       status: 400,
