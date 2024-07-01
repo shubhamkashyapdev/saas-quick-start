@@ -9,19 +9,18 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 model Todo {
-  id   Int     @id @default(autoincrement())
-  todo String  @db.Text
+  id   String  @id @default(auto()) @map("_id") @db.ObjectId
+  todo String
   done Boolean
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
   name  String @default("")
   image String @default("")
   email String @unique
