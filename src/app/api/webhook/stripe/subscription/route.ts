@@ -22,15 +22,15 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
-  const session = event.data.object as Stripe.Checkout.Session;
-  session.customer;
+  const session = event.data.object as Stripe.Subscription;
+
   if (!session.customer) {
     console.log("no customer");
     return new Response("no customer", { status: 400 });
   }
   const user = await prisma.user.findFirst({
     where: {
-      customerId: session.customer.toString(),
+      stripeCustomerId: session.customer as string,
     },
   });
   if (!user) {
@@ -39,16 +39,14 @@ export async function POST(request: Request) {
       status: 400,
     });
   }
+
   switch (event.type) {
     case "customer.subscription.created":
     case "customer.subscription.updated":
       // Retrieve the subscription details from Stripe.
-      const subscription = await stripe.subscriptions.retrieve(
-        session.subscription as string
-      );
-      if (subscription.status === "active") {
+      if (session.status === "active") {
         // WIP: Send a notification to the user's email address.
-        const planNickname = subscription.items.data[0]?.price.nickname;
+        const planNickname = session.items.data[0]?.price.nickname;
         const plan = pricingCards.find(
           (c) => c.title.toLowerCase() === planNickname?.toLowerCase()
         );
@@ -62,10 +60,8 @@ export async function POST(request: Request) {
             id: user.id,
           },
           data: {
-            stripeSubscriptionId: subscription.id,
-            stripeCurrentPeriodEnd: new Date(
-              subscription.current_period_end * 1000
-            ),
+            stripeSubscriptionId: session.id,
+            stripeCurrentPeriodEnd: new Date(session.current_period_end * 1000),
             plan: plan.plan,
           },
         });

@@ -28,7 +28,6 @@ model User {
 
   // Stripe Fields
   plan                   PLAN      @default(STARTER)
-  customerId             String?
   stripeCustomerId       String?
   stripeSubscriptionId   String?
   stripeCurrentPeriodEnd DateTime?

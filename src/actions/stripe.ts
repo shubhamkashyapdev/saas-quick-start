@@ -3,6 +3,7 @@ import { authOptions } from "@/lib/next-auth-options";
 import { stripe } from "@/lib/stripe";
 import { prisma } from "@/server/db";
 import { absoluteUrl } from "@/utils";
+import { PLAN } from "@prisma/client";
 import { getServerSession } from "next-auth";
 
 export type StripePlan = "UNLIMITED" | "BASIC";
@@ -88,6 +89,7 @@ type UserSubscriptionDetails = {
   stripeCurrentPeriodEnd: Date | null;
   stripeCustomerId: string | null;
   stripeSubscriptionId: string | null;
+  plan: PLAN | null;
 };
 export async function getSubcriptionDetails(): Promise<UserSubscriptionDetails> {
   const session = await getServerSession(authOptions);
@@ -95,6 +97,7 @@ export async function getSubcriptionDetails(): Promise<UserSubscriptionDetails> 
 
   if (!user?.id) {
     return {
+      plan: null,
       isSubscribed: false,
       isCanceled: false,
       stripeCurrentPeriodEnd: null,
@@ -107,6 +110,7 @@ export async function getSubcriptionDetails(): Promise<UserSubscriptionDetails> 
 
   if (!dbUser || !dbUser.stripeCustomerId) {
     return {
+      plan: null,
       isSubscribed: false,
       isCanceled: false,
       stripeCurrentPeriodEnd: null,
@@ -130,6 +134,7 @@ export async function getSubcriptionDetails(): Promise<UserSubscriptionDetails> 
   }
 
   return {
+    plan: dbUser.plan,
     stripeSubscriptionId: dbUser.stripeSubscriptionId,
     stripeCurrentPeriodEnd: dbUser.stripeCurrentPeriodEnd,
     stripeCustomerId: dbUser.stripeCustomerId,

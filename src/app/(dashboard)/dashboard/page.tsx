@@ -3,10 +3,7 @@ import {
   createSubscriptionSession,
   getSubcriptionDetails,
 } from "@/actions/stripe";
-import { authOptions } from "@/lib/next-auth-options";
-import { PLAN } from "@prisma/client";
-import { Session, getServerSession } from "next-auth";
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import React from "react";
 
 type Props = {
@@ -16,8 +13,12 @@ type Props = {
 };
 
 const Dashboard = async ({ searchParams: { plan } }: Props) => {
-  const { isSubscribed, isCanceled, stripeCurrentPeriodEnd } =
-    await getSubcriptionDetails();
+  const {
+    isSubscribed,
+    isCanceled,
+    stripeCurrentPeriodEnd,
+    plan: dbPlan,
+  } = await getSubcriptionDetails();
   if (!isSubscribed && plan) {
     const session = await createSubscriptionSession({ plan });
     if (session.url) {
@@ -28,7 +29,7 @@ const Dashboard = async ({ searchParams: { plan } }: Props) => {
   return (
     <div>
       <h1>Dashboard</h1>
-      <p>Plan: {plan}</p>
+      <p>Plan: {dbPlan}</p>
       <p>Subscribed: {isSubscribed ? "Yes" : "No"}</p>
       <p>Canceled: {isCanceled ? "Yes" : "No"}</p>
       <p>Current Period End: {stripeCurrentPeriodEnd?.toString()}</p>
