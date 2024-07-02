@@ -75,9 +75,6 @@ export const createSubscriptionSession = async ({ plan }: Props) => {
         quantity: 1,
       },
     ],
-    metadata: {
-      userId: user.id,
-    },
   });
   return {
     url: session.url,

@@ -14,6 +14,7 @@ export async function POST(request: Request) {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET || ""
     );
+    console.log(`constructed event ${event.type}`);
   } catch (err) {
     console.log({ err });
     return new Response(
@@ -22,19 +23,18 @@ export async function POST(request: Request) {
     );
   }
   const session = event.data.object as Stripe.Checkout.Session;
-  const userId = session?.metadata?.userId;
-  if (!userId) {
-    // logger.error(`invalid userId in metadata ${userId}`);
-    return new Response("invalid userId in metadata", {
-      status: 400,
-    });
+  session.customer;
+  if (!session.customer) {
+    console.log("no customer");
+    return new Response("no customer", { status: 400 });
   }
-  const user = await prisma.user.findUnique({
+  const user = await prisma.user.findFirst({
     where: {
-      id: userId,
+      customerId: session.customer.toString(),
     },
   });
   if (!user) {
+    console.log("user not found");
     return new Response("user not found", {
       status: 400,
     });
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
         }
         await prisma.user.update({
           where: {
-            id: userId,
+            id: user.id,
           },
           data: {
             stripeSubscriptionId: subscription.id,
