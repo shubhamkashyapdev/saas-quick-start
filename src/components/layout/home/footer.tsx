@@ -1,5 +1,5 @@
-import Logo from "@/components/global/logo";
-import React from "react";
+import Logo from '@/components/global/logo';
+import React from 'react';
 
 const Footer = () => {
   return (

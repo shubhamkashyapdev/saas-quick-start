@@ -1,11 +1,11 @@
-import GradientShadowButton from "@/components/ui/gradient-shadow-button";
-import React from "react";
+import GradientShadowButton from '@/components/ui/gradient-shadow-button';
+import React from 'react';
 
 const NewsletterSubscribe = () => {
   return (
     <section className="container my-32">
       <h2 className="text-3xl md:text-4xl lg:text-5xl text-foreground text-center font-semibold">
-        {" "}
+        {' '}
         Subscribe to our newsletter
       </h2>
       <div className="flex justify-center items-center mt-2">

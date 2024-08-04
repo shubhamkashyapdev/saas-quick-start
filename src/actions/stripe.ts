@@ -1,21 +1,21 @@
-import { stripePlanToPriceId } from "@/constants/stripe-constants";
-import { authOptions } from "@/lib/next-auth-options";
-import { stripe } from "@/lib/stripe";
-import { prisma } from "@/server/db";
-import { absoluteUrl } from "@/utils";
-import { PLAN } from "@prisma/client";
-import { getServerSession } from "next-auth";
+import { stripePlanToPriceId } from '@/constants/stripe-constants';
+import { authOptions } from '@/lib/next-auth-options';
+import { stripe } from '@/lib/stripe';
+import { prisma } from '@/server/db';
+import { absoluteUrl } from '@/utils';
+import { PLAN } from '@prisma/client';
+import { getServerSession } from 'next-auth';
 
-export type StripePlan = "UNLIMITED" | "BASIC";
+export type StripePlan = 'UNLIMITED' | 'BASIC';
 type Props = {
   plan: StripePlan;
 };
 export const createSubscriptionSession = async ({ plan }: Props) => {
-  const billingUrl = absoluteUrl("/dashboard");
+  const billingUrl = absoluteUrl('/dashboard');
   const nextSession = await getServerSession(authOptions);
   const user = nextSession?.user;
   if (!user) {
-    throw new Error("Unauthenticated");
+    throw new Error('Unauthenticated');
   }
   const dbUser = await prisma.user.findUnique({
     where: {
@@ -23,7 +23,7 @@ export const createSubscriptionSession = async ({ plan }: Props) => {
     },
   });
   if (!dbUser) {
-    throw new Error("User not found");
+    throw new Error('User not found');
   }
 
   //  check if customer id is present in db
@@ -61,15 +61,15 @@ export const createSubscriptionSession = async ({ plan }: Props) => {
   // create a subscription checkout session
   const planPriceId = stripePlanToPriceId[plan];
   if (!planPriceId) {
-    throw new Error("Invalid plan");
+    throw new Error('Invalid plan');
   }
   const session = await stripe.checkout.sessions.create({
-    mode: "subscription",
+    mode: 'subscription',
     success_url: billingUrl,
     cancel_url: billingUrl,
     customer: stripeCustomerId,
-    payment_method_types: ["card"],
-    billing_address_collection: "auto",
+    payment_method_types: ['card'],
+    billing_address_collection: 'auto',
     line_items: [
       {
         price: planPriceId,

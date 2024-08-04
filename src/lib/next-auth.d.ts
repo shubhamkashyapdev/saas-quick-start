@@ -1,9 +1,9 @@
-import NextAuth from "next-auth/next";
-import type { DefaultUser } from "next-auth";
-import { ISessionUser } from "@/types/user.types";
-import { IDBUser } from "@/types/db.schema.types";
+import NextAuth from 'next-auth/next';
+import type { DefaultUser } from 'next-auth';
+import { ISessionUser } from '@/types/user.types';
+import { IDBUser } from '@/types/db.schema.types';
 
-declare module "next-auth" {
+declare module 'next-auth' {
   interface Session {
     user: ISessionUser;
   }
@@ -14,7 +14,7 @@ declare module "next-auth" {
     email?: string;
   }
 }
-declare module "next-auth/jwt" {
+declare module 'next-auth/jwt' {
   interface JWT {
     id: number;
   }

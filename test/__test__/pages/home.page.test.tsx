@@ -1,13 +1,13 @@
-import { expect, test } from "vitest";
-import { render, screen } from "@testing-library/react";
-import Page from "../../../src/app/(app)/page";
+import { expect, test } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import Page from '../../../src/app/(app)/page';
 
-test("Page", async () => {
+test('Page', async () => {
   render(await Page());
   expect(
-    screen.getByRole("heading", {
+    screen.getByRole('heading', {
       level: 1,
-      name: "Kickstart Your SaaS App Idea with Ease 🚀",
+      name: 'Kickstart Your SaaS App Idea with Ease 🚀',
     })
   ).toBeDefined();
 });

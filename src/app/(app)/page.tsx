@@ -1,8 +1,8 @@
-import { HomeHero } from "@/components/Hero";
-import ShowcaseWithPricing from "@/components/home/showcase-with-pricing";
-import FeatureGrid from "@/components/home/feature-grid";
-import NewsletterSubscribe from "@/components/home/newsletter-subscribe";
-import { stripe } from "@/lib/stripe";
+import { HomeHero } from '@/components/Hero';
+import ShowcaseWithPricing from '@/components/home/showcase-with-pricing';
+import FeatureGrid from '@/components/home/feature-grid';
+import NewsletterSubscribe from '@/components/home/newsletter-subscribe';
+import { stripe } from '@/lib/stripe';
 
 export default async function Home() {
   const prices = await stripe.prices.list({

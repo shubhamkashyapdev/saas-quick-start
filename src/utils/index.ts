@@ -4,7 +4,7 @@
  * @returns string
  */
 export function absoluteUrl(path: string) {
-  if (typeof window !== "undefined") return path;
+  if (typeof window !== 'undefined') return path;
   const url = process.env.NEXTAUTH_URL;
   return `${url}${path}`;
 }

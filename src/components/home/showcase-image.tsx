@@ -1,7 +1,7 @@
-import BlurShadowEffect from "@/components/global/blur-shadow-effect";
-import { BorderBeam } from "@/components/magic-ui/border-beam";
-import Image from "next/image";
-import React from "react";
+import BlurShadowEffect from '@/components/global/blur-shadow-effect';
+import { BorderBeam } from '@/components/magic-ui/border-beam';
+import Image from 'next/image';
+import React from 'react';
 
 const ShowcaseImage = () => {
   return (
@@ -9,14 +9,14 @@ const ShowcaseImage = () => {
       <BlurShadowEffect />
       <BorderBeam />
       <Image
-        src={"/assets/preview-light.jpg"}
+        src={'/assets/preview-light.jpg'}
         alt="banner image"
         height={1200}
         width={1200}
         className="rounded-tl-2xl rounded-tr-2xl border-2 border-muted dark:hidden w-full h-full"
       />
       <Image
-        src={"/assets/preview-dark.jpg"}
+        src={'/assets/preview-dark.jpg'}
         alt="banner image"
         height={1200}
         width={1200}

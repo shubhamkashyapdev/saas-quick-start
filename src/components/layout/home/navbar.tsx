@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 import {
   NavigationMenu,
@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+} from '@/components/ui/navigation-menu';
 
 type Props = {
   className?: string;

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -6,13 +6,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { pricingCards } from "@/data/stripe-data";
-import { cn } from "@/lib/utils";
-import { PLAN } from "@prisma/client";
-import { CheckIcon } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+} from '@/components/ui/card';
+import { pricingCards } from '@/data/stripe-data';
+import { cn } from '@/lib/utils';
+import { PLAN } from '@prisma/client';
+import { CheckIcon } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
 
 type Props = {
   plan: PLAN;
@@ -20,11 +20,11 @@ type Props = {
 
 const FreePlanCard = ({ plan }: Props) => {
   return (
-    <Card className={cn("w-[300px] flex flex-col justify-between")}>
+    <Card className={cn('w-[300px] flex flex-col justify-between')}>
       <CardHeader>
         <CardTitle
           className={cn({
-            "text-muted-foreground": true,
+            'text-muted-foreground': true,
           })}
         >
           Free

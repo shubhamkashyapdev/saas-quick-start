@@ -1,12 +1,12 @@
-import GithubProvider from "next-auth/providers/github";
-import { env } from "@/env/server.mjs";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { prisma } from "@/server/db";
-import { NextAuthOptions } from "next-auth";
+import GithubProvider from 'next-auth/providers/github';
+import { env } from '@/env/server.mjs';
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { prisma } from '@/server/db';
+import { NextAuthOptions } from 'next-auth';
 
 export const authOptions: NextAuthOptions = {
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
   providers: [
     GithubProvider({

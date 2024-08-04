@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -6,33 +6,33 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import Stripe from "stripe";
-import { cn } from "@/lib/utils";
-import { pricingCards } from "@/data/stripe-data";
-import { CheckIcon } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+} from '@/components/ui/card';
+import Stripe from 'stripe';
+import { cn } from '@/lib/utils';
+import { pricingCards } from '@/data/stripe-data';
+import { CheckIcon } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 type Props = {
   card: Stripe.Price;
 };
 const PaidPlanCard = ({ card }: Props) => {
-  const isUnlimited = card.nickname === "Unlimited SaaS";
+  const isUnlimited = card.nickname === 'Unlimited SaaS';
   const plan = pricingCards.find(
     (c) => c.title.toLowerCase() === card.nickname?.toLowerCase()
   );
   return (
     <Card
       key={card.nickname}
-      className={cn("w-[300px] flex flex-col justify-between", {
-        "border-2 border-primary": isUnlimited,
+      className={cn('w-[300px] flex flex-col justify-between', {
+        'border-2 border-primary': isUnlimited,
       })}
     >
       <CardHeader>
         <CardTitle
-          className={cn("", {
-            "text-muted-foreground": !isUnlimited,
+          className={cn('', {
+            'text-muted-foreground': !isUnlimited,
           })}
         >
           {card.nickname}
@@ -58,7 +58,7 @@ const PaidPlanCard = ({ card }: Props) => {
         </div>
         <Link href={`/dashboard?plan=${plan?.plan}`} className="w-full">
           <Button
-            variant={isUnlimited ? "default" : "outline"}
+            variant={isUnlimited ? 'default' : 'outline'}
             className="w-full"
           >
             Get Started

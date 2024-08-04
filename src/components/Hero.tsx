@@ -1,11 +1,11 @@
-"use client";
-import { motion } from "framer-motion";
-import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
-import Link from "next/link";
-import { ArrowUpRightSquareIcon } from "lucide-react";
-import { HeroFlipWords } from "@/components/home/hero-flip-words";
-import LitUpButton from "@/components/ui/lit-up-button";
-import BlurShadowEffect from "@/components/global/blur-shadow-effect";
+'use client';
+import { motion } from 'framer-motion';
+import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
+import Link from 'next/link';
+import { ArrowUpRightSquareIcon } from 'lucide-react';
+import { HeroFlipWords } from '@/components/home/hero-flip-words';
+import LitUpButton from '@/components/ui/lit-up-button';
+import BlurShadowEffect from '@/components/global/blur-shadow-effect';
 
 export function HomeHero() {
   return (

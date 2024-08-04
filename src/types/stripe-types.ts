@@ -1,4 +1,4 @@
-import { PLAN } from "@prisma/client";
+import { PLAN } from '@prisma/client';
 
 export type PLANCardItem = {
   title: string;

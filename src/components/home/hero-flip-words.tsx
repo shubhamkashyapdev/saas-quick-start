@@ -1,7 +1,7 @@
-import { FlipWords } from "@/components/ui/flip-words";
+import { FlipWords } from '@/components/ui/flip-words';
 
 export function HeroFlipWords() {
-  const words = ["Build", "Scale", "Monetize"];
+  const words = ['Build', 'Scale', 'Monetize'];
 
   return (
     <div className="lex justify-center items-center px-4">

@@ -1,9 +1,9 @@
-import { TRPCError, initTRPC } from "@trpc/server";
-import { prisma } from "@/server/db";
-import { type Session } from "next-auth";
-import { CreateNextContextOptions } from "@trpc/server/adapters/next";
-import { getServerAuthSession } from "../auth";
-import superjson from "superjson";
+import { TRPCError, initTRPC } from '@trpc/server';
+import { prisma } from '@/server/db';
+import { type Session } from 'next-auth';
+import { CreateNextContextOptions } from '@trpc/server/adapters/next';
+import { getServerAuthSession } from '../auth';
+import superjson from 'superjson';
 
 type CreateContextOptions = {
   session: Session | null;
@@ -40,7 +40,7 @@ const inferSession = t.middleware(({ ctx, next }) => {
 
 const enforceAuth = t.middleware(({ ctx, next }) => {
   if (!ctx?.session?.user) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
+    throw new TRPCError({ code: 'UNAUTHORIZED' });
   }
   return next({
     ctx: {

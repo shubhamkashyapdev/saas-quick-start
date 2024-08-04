@@ -2,9 +2,9 @@ import {
   StripePlan,
   createSubscriptionSession,
   getSubcriptionDetails,
-} from "@/actions/stripe";
-import { redirect } from "next/navigation";
-import React from "react";
+} from '@/actions/stripe';
+import { redirect } from 'next/navigation';
+import React from 'react';
 
 type Props = {
   searchParams: {
@@ -30,8 +30,8 @@ const Dashboard = async ({ searchParams: { plan } }: Props) => {
     <div>
       <h1>Dashboard</h1>
       <p>Plan: {dbPlan}</p>
-      <p>Subscribed: {isSubscribed ? "Yes" : "No"}</p>
-      <p>Canceled: {isCanceled ? "Yes" : "No"}</p>
+      <p>Subscribed: {isSubscribed ? 'Yes' : 'No'}</p>
+      <p>Canceled: {isCanceled ? 'Yes' : 'No'}</p>
       <p>Current Period End: {stripeCurrentPeriodEnd?.toString()}</p>
     </div>
   );
