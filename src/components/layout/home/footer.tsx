@@ -3,9 +3,9 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className="flex justify-center items-center py-6 pt-10 gap-3 border-t-[1px]">
+    <div className="flex items-center justify-center gap-3 border-t-[1px] py-6 pt-10">
       <Logo />
-      <p className="font-medium -mt-1">© 2023 Traverx. All rights reserved.</p>
+      <p className="-mt-1 font-medium">© 2023 Traverx. All rights reserved.</p>
     </div>
   );
 };

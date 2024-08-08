@@ -5,9 +5,9 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className="fixed top-0 w-full z-50 h-16 pt-4">
-      <div className="bg-background/40 absolute top-0 left-0 right-0 h-full w-full blur-sm"></div>
-      <div className="container relative z-20 flex justify-between items-center">
+    <div className="fixed top-0 z-50 h-16 w-full pt-4">
+      <div className="absolute left-0 right-0 top-0 h-full w-full bg-background/40 blur-sm"></div>
+      <div className="container relative z-20 flex items-center justify-between">
         {/* Logo */}
         <Logo />
         {/* Navbar */}

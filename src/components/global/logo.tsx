@@ -8,7 +8,7 @@ const Logo = () => {
         src="/assets/squicks-logo-light.webp"
         width={120}
         height={120}
-        className="object-contain hidden dark:block"
+        className="hidden object-contain dark:block"
         alt="SaaS Quick Starter"
       />
       <Image

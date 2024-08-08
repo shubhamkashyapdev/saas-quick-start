@@ -14,5 +14,7 @@
   "requirePragma": false,
   "insertPragma": false,
   "htmlWhitespaceSensitivity": "css",
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindAttributes": ["className"]
 }

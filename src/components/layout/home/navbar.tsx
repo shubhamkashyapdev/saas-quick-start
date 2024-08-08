@@ -18,7 +18,7 @@ type Props = {
 };
 const Navbar = ({ className }: Props) => {
   return (
-    <NavigationMenu className="bg-transparent hidden sm:block">
+    <NavigationMenu className="hidden bg-transparent sm:block">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="#pricing-cards" legacyBehavior passHref>

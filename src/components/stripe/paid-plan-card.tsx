@@ -25,7 +25,7 @@ const PaidPlanCard = ({ card }: Props) => {
   return (
     <Card
       key={card.nickname}
-      className={cn('w-[300px] flex flex-col justify-between', {
+      className={cn('flex w-[300px] flex-col justify-between', {
         'border-2 border-primary': isUnlimited,
       })}
     >

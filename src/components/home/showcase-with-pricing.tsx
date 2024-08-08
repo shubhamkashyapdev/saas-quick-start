@@ -15,17 +15,17 @@ const ShowcaseWithPricing = ({ prices }: Props) => {
       </div>
       <div
         id="pricing-cards"
-        className="flex justify-center items-center relative flex-col gap-4 pb-20 -mt-12 z-10"
+        className="relative z-10 -mt-12 flex flex-col items-center justify-center gap-4 pb-20"
       >
-        <h2 className="text-3xl lg:text-4xl text-foreground text-center font-semibold">
+        <h2 className="text-center text-3xl font-semibold text-foreground lg:text-4xl">
           {' '}
           Choose what fits you right
         </h2>
-        <p className="text-foreground text-center max-w-[50ch]">
+        <p className="max-w-[50ch] text-center text-foreground">
           Our straightforward pricing plans are tailored to meet your needs. If
           {" you're"} not ready to commit you can get started for free.
         </p>
-        <div className="flex justify-center gap-4 flex-wrap mt-16">
+        <div className="mt-16 flex flex-wrap justify-center gap-4">
           <FreePlanCard plan={'STARTER'} />
           {prices.data.reverse().map((card) => (
             <PaidPlanCard key={card.nickname} card={card} />

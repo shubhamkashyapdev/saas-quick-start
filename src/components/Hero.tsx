@@ -11,7 +11,7 @@ export function HomeHero() {
   return (
     <div className="relative">
       <HeroHighlight>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <HeroFlipWords />
         </div>
         <motion.h1
@@ -27,13 +27,13 @@ export function HomeHero() {
             duration: 0.5,
             ease: [0.4, 0.0, 0.2, 1],
           }}
-          className="text-4xl mt-6 px-4 md:text-5xl lg:text-6xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-snug lg:leading-normal text-center mx-auto "
+          className="mx-auto mt-6 max-w-4xl px-4 text-center text-4xl font-bold leading-snug text-neutral-700 dark:text-white md:text-5xl lg:text-6xl lg:leading-normal"
         >
           Kickstart Your SaaS App Idea with Ease 🚀
         </motion.h1>
         <Link
           href="#pricing-cards"
-          className="flex justify-center items-center mt-6"
+          className="mt-6 flex items-center justify-center"
         >
           <LitUpButton>Get Started</LitUpButton>
         </Link>

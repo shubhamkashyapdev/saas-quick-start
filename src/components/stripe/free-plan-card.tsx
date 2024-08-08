@@ -20,7 +20,7 @@ type Props = {
 
 const FreePlanCard = ({ plan }: Props) => {
   return (
-    <Card className={cn('w-[300px] flex flex-col justify-between')}>
+    <Card className={cn('flex w-[300px] flex-col justify-between')}>
       <CardHeader>
         <CardTitle
           className={cn({
@@ -35,7 +35,7 @@ const FreePlanCard = ({ plan }: Props) => {
         <span className="text-4xl font-bold">$0</span>
         <span>/ month</span>
       </CardContent>
-      <CardFooter className="flex flex-col  items-start gap-4 ">
+      <CardFooter className="flex flex-col items-start gap-4">
         <div>
           {pricingCards
             .find((c) => c.title.toLowerCase() === plan.toLowerCase())
