@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import TRPCProvider from '@/trpc/TRPCProvider';
-import { ThemeProvider } from '@/providers/theme-provider';
 import { cn } from '@/lib/utils';
 import Providers from '@/components/layout/dashboard/providers';
 import { getServerSession } from 'next-auth';

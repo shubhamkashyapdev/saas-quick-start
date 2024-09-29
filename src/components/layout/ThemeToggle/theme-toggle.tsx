@@ -1,37 +1,51 @@
 'use client';
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
-import { useTheme } from 'next-themes';
 
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-type CompProps = {};
-export default function ThemeToggle({}: CompProps) {
-  const { setTheme } = useTheme();
+import { SunIcon, MoonIcon } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { AnimatePresence, motion } from 'framer-motion';
+
+export default function ThemeSwitch() {
+  const [mounted, setMounted] = useState(false);
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
+
+  useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      const item = document.getElementById('vapi-support-btn');
+      if (item) {
+        item.style.position = 'fixed';
+        // @ts-ignore
+        item.style.zIndex = 9999;
+        item.classList.add('!bg-background');
+        item.classList.add('!text-foreground');
+      }
+    };
+    const timeout = setTimeout(updatePosition, 500);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (!mounted) return <div className="h-6 w-6"></div>;
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <AnimatePresence presenceAffectsLayout mode="sync">
+      {currentTheme === 'dark' ? (
+        <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+          <SunIcon
+            className="h-6 w-6 cursor-pointer"
+            onClick={() => setTheme('light')}
+          />
+        </motion.div>
+      ) : (
+        <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+          <MoonIcon
+            className="h-6 w-6 cursor-pointer text-foreground"
+            onClick={() => setTheme('dark')}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
