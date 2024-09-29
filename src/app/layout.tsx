@@ -4,6 +4,10 @@ import './globals.css';
 import TRPCProvider from '@/trpc/TRPCProvider';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { cn } from '@/lib/utils';
+import Providers from '@/components/layout/dashboard/providers';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/next-auth-options';
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,22 +17,17 @@ export const metadata: Metadata = {
     'Start Strong with Next.js, TailwindCSS, Prisma, Stripe: Your SaaS Quickstart',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <body className={cn('overflow-x-hidden', inter.className)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <TRPCProvider>{children}</TRPCProvider>
-        </ThemeProvider>
+        <NextTopLoader showSpinner={false} />
+        <Providers session={session}>{children}</Providers>
       </body>
     </html>
   );

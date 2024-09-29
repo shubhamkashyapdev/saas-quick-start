@@ -1,6 +1,6 @@
 import Logo from '@/components/global/logo';
 import Navbar from '@/components/layout/home/navbar';
-import { ModeToggle } from '@/components/layout/mode-toggle';
+import ModeToggle from '@/components/layout/ThemeToggle/theme-toggle';
 import React from 'react';
 
 const Header = () => {
